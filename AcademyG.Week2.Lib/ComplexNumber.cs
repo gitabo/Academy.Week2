@@ -161,9 +161,16 @@ namespace AcademyG.Week2.Lib
             return ParteReale.GetHashCode() ^ ParteImmaginaria.GetHashCode();
         }
 
-        public static bool operator ==(ComplexNumber c1, ComplexNumber c2)
+        public static bool operator ==(ComplexNumber a, ComplexNumber b)
         {
-            return c1.ParteReale == c2.ParteReale && c1.ParteImmaginaria == c2.ParteImmaginaria;
+            if (object.ReferenceEquals(a, null))
+            {
+                if (object.ReferenceEquals(b, null))
+                    return true;
+
+                return false;
+            }
+            return a.Equals(b);
         }
 
         public static bool operator !=(ComplexNumber c1, ComplexNumber c2)
