@@ -2,7 +2,7 @@
 
 namespace AcademyG.Week2.Lib
 {
-    public class ComplexNumber
+    public class ComplexNumber : IEquatable<ComplexNumber>
     {
         public double ParteReale { get; set; }
         public double ParteImmaginaria { get; set; }
@@ -143,5 +143,42 @@ namespace AcademyG.Week2.Lib
             return compl.Coniugato;
         }
 
+        public override bool Equals(object obj)
+        {
+            return this.Equals(obj as ComplexNumber);
+        }
+
+        public bool Equals(ComplexNumber other)
+        {
+            if (other == null)
+                return false;
+
+            return this.ParteReale == other.ParteReale && this.ParteImmaginaria == other.ParteImmaginaria;
+        }
+
+        public override int GetHashCode()
+        {
+            return ParteReale.GetHashCode() ^ ParteImmaginaria.GetHashCode();
+        }
+
+        public static bool operator ==(ComplexNumber c1, ComplexNumber c2)
+        {
+            return c1.ParteReale == c2.ParteReale && c1.ParteImmaginaria == c2.ParteImmaginaria;
+        }
+
+        public static bool operator !=(ComplexNumber c1, ComplexNumber c2)
+        {
+            return !(c1 == c2);
+        }
+
+        public static explicit operator double(ComplexNumber value)
+        {
+            return value.Modulo;
+        }
+
+        public static implicit operator ComplexNumber(double value)
+        {
+            return new ComplexNumber(value, 0);
+        }
     }
 }

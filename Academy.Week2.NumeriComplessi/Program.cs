@@ -68,7 +68,11 @@ namespace Academy.Week2.NumeriComplessi
 
             ComplexNumber complOp = compl3 + compl4;
             Console.WriteLine($"Sum: ({complOp.ParteReale}, {complOp.ParteImmaginaria})");
-
+            double d = (double)compl3; 
+            Console.WriteLine($"Explicit cast compl3: {d}");
+            d = 5;
+            ComplexNumber compl5 = d;
+            Console.WriteLine($"Implicit cast compl5: ({compl5.ParteReale},{compl5.ParteImmaginaria})");
 
         }
     }
